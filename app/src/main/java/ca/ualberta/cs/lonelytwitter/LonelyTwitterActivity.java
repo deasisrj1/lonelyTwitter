@@ -37,10 +37,16 @@ public class LonelyTwitterActivity extends Activity {
 		saveButton.setOnClickListener(new View.OnClickListener() {
 
 			public void onClick(View v) {
-				setResult(RESULT_OK);
 				String text = bodyText.getText().toString();
+
+				ImportantTweet importantTweet = new ImportantTweet();
+				try {
+					importantTweet.setMessage(text);
+				} catch (TweetTooLong e){
+
+				}
+
 				saveInFile(text, new Date(System.currentTimeMillis()));
-				finish();
 
 			}
 		});
